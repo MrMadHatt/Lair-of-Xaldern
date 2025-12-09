@@ -1,0 +1,16 @@
+Import sys # Importing sys module for system-specific parameters and functions.
+
+inventory = [] # Initialize an empty list to hold the player's inventory items.
+
+current_room = 'Elaborate Entrance Hall' # Set the starting room for the player.
+
+# Function to display game instructions.
+def show_instructions():
+    # Function to display the game instructions to the player.
+    print(' ---- Labyrinth of the Nine ----') # Display game title.
+
+    print("Commands: 'go [direction]', 'get [item]', 'quit'") # Display available commands to the player.
+
+    print(" Directions: north, south, east, west ") # Display possible movement directions.
+    
+    print("-" * 40) # Print a separator line for better readability.
