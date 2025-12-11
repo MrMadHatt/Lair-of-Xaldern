@@ -1,4 +1,4 @@
-Import sys # Importing sys module for system-specific parameters and functions.
+import sys # Importing sys module for system-specific parameters and functions.
 
 inventory = [] # Initialize an empty list to hold the player's inventory items.
 
@@ -6,11 +6,83 @@ current_room = 'Elaborate Entrance Hall' # Set the starting room for the player.
 
 # Function to display game instructions.
 def show_instructions():
-    # Function to display the game instructions to the player.
+
     print(' ---- Labyrinth of the Nine ----') # Display game title.
 
     print("Commands: 'go [direction]', 'get [item]', 'quit'") # Display available commands to the player.
 
     print(" Directions: north, south, east, west ") # Display possible movement directions.
-    
+
     print("-" * 40) # Print a separator line for better readability.
+
+    print("Quest: Find the Sword of Gilathis and defeat the three-headed dragon!") # Display the player's quest objective.
+    
+    print("-" * 40) # Print another separator line for better readability.
+    #Logic to display instructions only once at the start of the game.
+
+# Define the rooms and their connections along with items and objects.
+ROOMS = {
+    'Elaborate Entrance Hall': {    #Define the Elaborate Entrance Hall room.
+        'north': 'Library',    #Define the north exit to the library.
+        'east': 'kitchen',  #Define the east exit to the kitchen.
+        'south': 'Royal Courtyard',   #Define the south exit to the royal courtyard.
+        'west': 'Dungeon', #Define the west exit to the dungeon.
+    },
+    'Library': {    #Define the Library room.
+        'south': 'Elaborate Entrance Hall',   #Define the south exit to the Elaborate Entrance Hall.
+        'item': 'Potion of Strength',   #Define the item in the Library room.
+    },
+    'Kitchen': {    #Define the Kitchen room.
+        'west': 'Elaborate Entrance Hall',  #Define the west exit to the Elaborate Entrance Hall.
+        'item': 'Vial of Xaldern',  #Define the item in the Kitchen room.
+    },
+    'Royal Courtyard': {    #Define the Royal Courtyard room.
+        'north': 'Elaborate Entrance Hall',  #Define the north exit to the Elaborate Entrance Hall.
+        'object': 'Three-Headed Dragon', #Define the object in the Royal Courtyard room.
+    },
+    'Dungeon': {    #Define the Dungeon room.
+        'east': 'Elaborate Entrance Hall', #Define the east exit to the Elaborate Entrance Hall.
+        'Secret_Chamber': 'Secret Chamber',    #Define the east exit to the Secret Chamber.
+    },
+    'Secret Chamber': {    #Define the Secret Chamber room.
+        'west': 'Dungeon', #Define the west exit to the Dungeon.
+        'item': 'Sword of Gilathis',  #Define the item in the Secret Chamber room.
+    },
+}
+def get_new_room(user_move, current_room): # Function to get the new room based on user movement.
+
+    if user_move.startswith('go '): # Check if the user input starts with 'go '.
+
+        direction = user_move.split() [1] # Extract the direction from the user input.
+
+        if direction in ROOMS[current_room]: # Check if the direction is valid for the current room.
+            return ROOMS[current_room][direction] # Return the new room based on the direction.
+        
+        else:
+
+            print("YOU SHALL NOT PASS! Invalid move. ") # Notify the player of an invalid move.
+        return current_room # Return the current room if the move is invalid.
+
+
+
+    # Logic to display inventory in current room. 
+def show_status(room, current_inventory): # Function to display the player's current status.
+
+    print("\n---------------------" ) # Print a separator line for better readability.
+    
+    print("You are in the " + room) # Display the current room of the player.
+
+    print("Inventory: " + str(current_inventory)) # Display the player's current inventory.
+
+    #Logic for the Library.
+    if room == 'Library' and 'sword' not in current_inventory: # Check if the player is in the Library and does not have the Sword.
+
+        print("You see a Potion of Strength is bubbling on the counter!") # Notify the player of the Potion of Strength in the Library. 
+
+    elif room == 'Kitchen': # Check if the player is in the Kitchen.
+        
+        if 'Potion' not in current_inventory: # Check if the player does not have the Potion.
+
+            print("A Vial of xaldern is glowing softly on the shelf. ") # Notify player of the Potion in the Kitchen.
+        
+            print("You see nothing of interest here.") # Notify player that there is nothing of interest in the current room.
