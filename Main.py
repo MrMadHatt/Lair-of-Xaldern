@@ -15,6 +15,8 @@ inventory = [] # Initialize an empty list to hold the player's inventory items.
 game_status = 'playing' # Initialize the game status to 'playing'.
 
 def main(): # Main function to run the game loop.
+    
+    show_instructions() # Display the game instructions at the start.
 
     global current_room, inventory, game_status # Declare global variables to modify them within the function.
 
@@ -26,10 +28,15 @@ def main(): # Main function to run the game loop.
 
         if user_input == 'quit': # Check if the user wants to quit the game.
             
-            global game_status # Declare game_status as global to modify it.
-            
             game_status = 'quit' # Set the game status to 'quit' to exit the loop.
 
             print("Thanks for playing! Goodbye.") # Print a goodbye message.
 
             continue # Skip the rest of the loop and start the next iteration.
+
+        pick_up_item(user_input, current_room, inventory) # Call the function to pick up an item if applicable.
+
+        current_room = get_new_room(user_input, current_room) # Call the function to get the new room based on user movement.
+
+if __name__ == '__main__': # Check if the script is being run directly.
+    main() # Call the main function to start the game.
