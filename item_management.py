@@ -6,9 +6,9 @@ def pick_up_item(user_input, room, current_inventory): # Function to pick up an 
 
         item_to_get = user_input.split(' ', 1)[1] #Extract the item name from the user input.
 
-        if 'item' in ROOMS[room] and item_to_get == ROOMS[room]['item']: #Check if the item is in the current room.
+        if 'item' in ROOMS[room] and item_to_get == ROOMS[room]['item'].title(): #Check if the item is in the current room.
 
-            current_inventory.append(item_to_get)   #Add the item to the player's inventory.
+            current_inventory.append(item_to_get).title() #Add the item to the player's inventory.
 
             del ROOMS[room]['item']  #Remove the item from the room after picking it up.
 

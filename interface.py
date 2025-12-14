@@ -3,11 +3,17 @@ from data import ROOMS  #Import the ROOMS dictionary from the data module.
 #Logic to display the player's current status.
 def show_status(room, current_inventory): # Function to display the player's current status.
 
-    print("\n---------------------" ) # Print a separator line for better readability.
+    print("\n------------------------------------------------" ) # Print a separator line for better readability.
     
     print("You are in the " + room) # Display the current room of the player.
 
     print("Inventory: " + str(current_inventory)) # Display the player's current inventory.
+
+    NON_DIRECTION_KEYS = ['Item', 'Object'] # Define keys that are not directions.
+
+    available_moves = [key for key in ROOMS[room].keys() if key not in NON_DIRECTION_KEYS] # Get available movement directions from the current room.
+
+    print("\nExits: " + ", ".join(available_moves)) # Display available exits from the current room.
 
     # Check for items in the current room.
     if 'item' in ROOMS[room]: # Check if there is an item in the current room.
@@ -23,13 +29,15 @@ def show_instructions():
 
     print(' ---- Lair of Xaldern ----') # Display game title.
 
+    print("-" * 80) # Print a separator line for better readability.
+
     print("Commands: 'go [direction]', 'get [item]', 'quit'") # Display available commands to the player.
 
-    print(" Directions: north, south, east, west ") # Display possible movement directions.
+    print("Directions: North, South, East, West ") # Display possible movement directions.
 
-    print("-" * 40) # Print a separator line for better readability.
+    print("-" * 80) # Print a separator line for better readability.
 
-    print("Quest: Find the Sword of Gilathis and defeat Xaldern the three-headed dragon!") # Display the player's quest objective.
+    print("Quest: Find the Sword of Gilathis and defeat Xaldern the Three-Headed Dragon!") # Display the player's quest objective.
     
-    print("-" * 40) # Print another separator line for better readability.
+    print("-" * 80) # Print another separator line for better readability.
     #Logic to display instructions only once at the start of the game.
