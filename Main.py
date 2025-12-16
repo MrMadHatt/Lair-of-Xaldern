@@ -2,48 +2,48 @@
 
 import sys # Importing sys module for system-specific parameters and functions.
 
-from movement import get_new_room # Import the ROOMS dictionary from the data module.
+from movement import get_new_room # Import from the movement module.
 
 from interface import show_status, show_instructions # Import the show_status function from the interface module.
 
-from item_management import pick_up_item
-
- # Import the get_new_room function from the movement module.
-
-current_room = 'elaborate entrance hall'.title() # Set the starting room for the player.
-
-inventory = [] # Initialize an empty list to hold the player's inventory items.
-
-game_status = 'playing' # Initialize the game status to 'playing'.
+from item_management import pick_up_item    #Import the pick_up_item function from the item_management module.
 
 def main(): # Main function to run the game loop.
 
-    show_instructions() # Display the game instructions at the start.
 
-    global current_room, inventory, game_status # Declare global variables to modify them within the function.
+    # --- FIX: Move variables INSIDE main() to avoid scope errors ---
+    current_room = 'elaborate entrance hall' # Set the starting room (lowercase to match data.py keys)
 
-    while game_status == 'playing': # Continue the game loop while the game status is 'playing'.
+    inventory = [] # Initialize an empty list for inventory.
+    
+    game_status = 'playing' # Initialize game status.
 
-        show_status(current_room, inventory) # Display the player's current status.
+    show_instructions() # Display instructions once at start.
 
-        user_input = input("> ").upper().lower() # Get user input and convert it to uppercase.
+    while game_status == 'playing': # Game loop.
 
-        if user_input == 'QUIT': # Check if the user wants to quit the game.
-            
-            game_status = 'Quit' # Set the game status to 'quit' to exit the loop.
-
-            print("Thanks for playing! Goodbye.") # Print a goodbye message.
-
-            continue # Skip the rest of the loop and start the next iteration.
+        show_status(current_room, inventory) # Display status.
         
-        if user_input.startswith('command'.upper().lower()): #Displays available commands to player upon request.
+        user_input = input("> ").lower().strip() # Get input, lower it, and strip whitespace.
 
-            print("Available Commands: 'go [direction]'.title(), 'get [item]'.title(), 'quit'") # Display available commands to the player.
+        # --- Game Logic ---
+        if user_input == 'quit': # Quit the game
+            game_status = 'quit' # Ends the loop
+            print("Thanks for playing! Goodbye.") # Farewell message
 
-        pick_up_item(user_input, current_room, inventory) # Call the function to pick up an item if applicable.
+        elif user_input.startswith('go '): # Move to a new room
+            # Capture the returned room!
+            current_room = get_new_room(user_input, current_room) 
 
-        current_room = get_new_room(user_input, current_room) # Call the function to get the new room based on user movement.
+        elif user_input.startswith('get '): # Pick up item
+            # Pass the list 'inventory' which is mutable, so it updates automatically
+            pick_up_item(user_input, current_room, inventory) 
 
-if __name__ == '__main__': # Check if the script is being run directly.
+        elif user_input == 'command' or user_input == 'commands': # Show available commands
+            print("Available Commands: 'go [direction]', 'get [item]', 'quit'") 
 
-    main() # Call the main function to start the game.
+        else:   
+            print("Invalid Command.") # Notify the player of an invalid command.
+
+if __name__ == '__main__':  # Entry point of the program
+    main()  # Call the main function to start the game

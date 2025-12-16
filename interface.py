@@ -5,11 +5,10 @@ def show_status(room, current_inventory): # Function to display the player's cur
 
     print("\n------------------------------------------------" ) # Print a separator line for better readability.
     
-    print("You are in the " + room) # Display the current room of the player.
-
+    print("You are in the " + room) #Display the current room the player is in.
     print("Inventory: " + str(current_inventory)) # Display the player's current inventory.
 
-    NON_DIRECTION_KEYS = ['Item', 'Object'] # Define keys that are not directions.
+    NON_DIRECTION_KEYS = ['item', 'object'] # Define keys that are not directions.
 
     available_moves = [key for key in ROOMS[room].keys() if key not in NON_DIRECTION_KEYS] # Get available movement directions from the current room.
 
@@ -31,7 +30,7 @@ def show_instructions():
 
     print("-" * 80) # Print a separator line for better readability.
 
-    print("Commands: 'go [direction]', 'get [item]', 'quit'") # Display available commands to the player.
+    print("Commands: 'Go [direction]', 'Get [item]', 'Quit'") # Display available commands to the player.
 
     print("Directions: North, South, East, West ") # Display possible movement directions.
 
