@@ -2,27 +2,39 @@
 
 # Lair-of-Xaldern
 
-# Python Text-Based RPG: Development Build
+## Python Learning Project: Text-Based RPG Logic
 
-## Project Overview
-This is a foundational logic project developed in Python to explore state management and object-oriented structure. The game currently features a functional navigation system and an interactive environment where players can explore and interact with objects.
+# Project Overview
+This is a personal learning project developed as I prepare for my Computer Science coursework at Pikes Peak State College. The goal was to move beyond basic syntax and build a functional system that handles state management and player-driven logic.
 
-## Current Features (Version 1.0)
-* **Room Navigation Logic:** A robust movement system allowing the player to transition between 5 distinct virtual environments.
-* **Item Detection & Acquisition:** Implemented logic for identifying items within rooms and successfully adding them to the player's session.
-* **Command Parsing:** Basic text-input processing to translate user strings into in-game actions.
-* **Structured Data:** Using dictionaries or classes to define room connections and item locations.
+# Why I Built This
 
-## Technical Goals & Learning Objectives
-* **Encapsulation:** Moving from global variables to class-based structures.
-* **State Mapping:** Ensuring the "game world" updates correctly as the player moves.
+I’ve always been fascinated by how software handles complex, changing data. I chose a text-based RPG because it forced me to solve three specific engineering hurdles:
 
-## Roadmap (Features in Progress)
-* **Inventory Management:** Expanding the item logic to allow players to drop, use, or inspect collected items.
-* **Player Attributes:** Implementing a 'Player' class to track stats like health or experience.
-* **Combat Engine:** Designing a turn-based encounter system for the "Boss" room.
+# Navigational Logic: How to map a physical space using dictionaries and keys.
 
-## How to Run
-1. Ensure you have Python installed.
-2. Clone this repository.
-3. Run 'Python main.py' 
+# State Tracking: Ensuring the program "remembers" what is in the player's inventory across different functions.
+
+# Input Validation: Handling unpredictable user text to prevent the program from crashing.
+
+# Current Features (The "Build" so far)
+
+# Dynamic Movement: A 5-room map where the user can move North, South, East, or West.
+
+# Inventory System: Logic to check for items, add them to a list, and update the game state.
+
+# Clean Interface: Clear text prompts to guide the user through the experience.
+
+# Technical Challenges & Lessons Learned
+
+# The Global Variable Hurdle: Initially, I struggled with how functions access data. I learned how to pass variables correctly to maintain a "clean" global state.
+
+# Infinite Loops: I had to debug several instances where the game wouldn't exit properly, which taught me a lot about while loop conditions.
+
+# Future Roadmap
+
+[ ] Add a "Battle" class to practice Object-Oriented Programming (OOP).
+
+[ ] Implement a Save/Load feature using JSON.
+
+
