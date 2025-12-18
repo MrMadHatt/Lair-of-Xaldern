@@ -1,18 +1,20 @@
-from data import ROOMS # Importing the ROOMS dictionary from the data module.
+# Importing the ROOMS dictionary from the data module.
+from data import ROOMS
 
 #Logic for moving between rooms.
-def get_new_room(user_move, current_room): # Function to get the new room based on user movement.
+def get_new_room(user_move, current_room): 
 
-    if user_move.startswith('go '): # Check if the user input starts with 'go '.
+# Check if the user input starts with 'go ' to move to a new room.
+    if user_move.startswith('go '):
+        direction = user_move.split()[1]
 
-        direction = user_move.split()[1]   # Extract the direction from the user input.
-
-        if direction in ROOMS[current_room]: # Check if the direction is valid for the current room.
-
-            return ROOMS[current_room][direction] # Return the new room based on the direction.
+# Check if the direction is valid for the current room.
+        if direction in ROOMS[current_room]: 
+            return ROOMS[current_room][direction]
         
+        #Notify the player of an invalid move.
         else:
-
-            print("YOU SHALL NOT PASS! Invalid move. ") # Notify the player of an invalid move.
-
-    return current_room # Return the current room if the move is invalid.
+            print("YOU SHALL NOT PASS! Invalid move. ")
+            
+            # Return the current room if the move is invalid.
+    return current_room 

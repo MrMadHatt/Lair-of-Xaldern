@@ -1,42 +1,37 @@
-from data import ROOMS  #Import the ROOMS dictionary from the data module.
+    # Import necessary data from the data module.
+from data import ROOMS
 
-#Logic to display the player's current status.
-def show_status(room, current_inventory): # Function to display the player's current status.
+    #Logic to display the player's current status.
+def show_status(room, current_inventory): 
 
-    print("\n------------------------------------------------" ) # Print a separator line for better readability.
+    # Print a separator line for better readability.
+    print("\n------------------------------------------------" )
     
-    print("You are in the " + room) #Display the current room the player is in.
-    print("Inventory: " + str(current_inventory)) # Display the player's current inventory.
+    # Display the current room and inventory.
+    print("You are in the " + room)
+    print("Inventory: " + str(current_inventory)) 
 
-    NON_DIRECTION_KEYS = ['item', 'object'] # Define keys that are not directions.
+    # Define non-direction keys to filter out from room connections.
+    NON_DIRECTION_KEYS = ['item', 'object']
+    
+    # Display available moves from the current room.
+    available_moves = [key for key in ROOMS[room].keys() if key not in NON_DIRECTION_KEYS] 
 
-    available_moves = [key for key in ROOMS[room].keys() if key not in NON_DIRECTION_KEYS] # Get available movement directions from the current room.
+    # Display available exits from the current room.
+    print("\nExits: " + ", ".join(available_moves)) 
 
-    print("\nExits: " + ", ".join(available_moves)) # Display available exits from the current room.
+    # Check and display any items present in the current room.
+    if 'item' in ROOMS[room]:
+        item_name = ROOMS[room]['item']     
+        if item_name not in current_inventory: 
+            print("You see a " + item_name + " here.") 
 
-    # Check for items in the current room.
-    if 'item' in ROOMS[room]: # Check if there is an item in the current room.
-
-        item_name = ROOMS[room]['item'] # Get the name of the item in the room.
-        
-        if item_name not in current_inventory: # Check if the item is not already in the inventory
-
-            print("You see a " + item_name + " here.") # Notify the player of the item in the room.
-
-# Function to display game instructions.
+    # Function to show game instructions to the player.
 def show_instructions():
-
-    print(' ---- Lair of Xaldern ----') # Display game title.
-
-    print("-" * 80) # Print a separator line for better readability.
-
-    print("Commands: 'Go [direction]', 'Get [item]', 'Quit'") # Display available commands to the player.
-
-    print("Directions: North, South, East, West ") # Display possible movement directions.
-
-    print("-" * 80) # Print a separator line for better readability.
-
-    print("Quest: Find the Sword of Gilathis and defeat Xaldern the Three-Headed Dragon!") # Display the player's quest objective.
-    
-    print("-" * 80) # Print another separator line for better readability.
-    #Logic to display instructions only once at the start of the game.
+    print(' ---- Lair of Xaldern ----')
+    print("-" * 80) 
+    print("Commands: 'Go [direction]', 'Get [item]', 'Quit'") 
+    print("Directions: North, South, East, West ") 
+    print("-" * 80) 
+    print("Quest: Find the Sword of Gilathis and defeat Xaldern the Three-Headed Dragon!") 
+    print("-" * 80) 

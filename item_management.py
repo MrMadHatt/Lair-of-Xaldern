@@ -1,15 +1,17 @@
-from data import ROOMS  #Import the ROOMS dictionary from the data module.
+# Import the ROOMS data structure from the data module.
+from data import ROOMS
 
 #logic for picking up items.
-def pick_up_item(user_input, room, current_inventory): # Function to pick up an item.
+def pick_up_item(user_input, room, current_inventory):
 
-    if user_input.startswith('get '): #Check if the user input starts with 'get '.
+# Check if the user input starts with 'get ' to pick up an item.
+    if user_input.startswith('get '): 
+        item_to_get = user_input.split(' ', 1)[1] 
 
-        item_to_get = user_input.split(' ', 1)[1] #Extract the item name from the user input.
+#Check if the item is present in the current room and not already in inventory.
+        if 'item' in ROOMS[room] and item_to_get.lower() == ROOMS[room]['item'].lower(): 
+            current_inventory.append(item_to_get) 
 
-        if 'item' in ROOMS[room] and item_to_get.lower() == ROOMS[room]['item'].lower(): #Check if the item is in the current room.
-
-            current_inventory.append(item_to_get) #Add the item to the player's inventory.
-
-            del ROOMS[room]['item']  #Remove the item from the room after picking it up.
-            print("\n**" + item_to_get + " has been added to your inventory!**") #Notify the player that the item has been added to the inventory.
+# Remove the item from the room after picking it up.
+            del ROOMS[room]['item']  
+            print("\n**" + item_to_get + " has been added to your inventory!**")
