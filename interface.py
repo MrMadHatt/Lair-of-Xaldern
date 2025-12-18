@@ -8,7 +8,7 @@ def show_status(room, current_inventory):
     print("\n------------------------------------------------" )
     
     # Display the current room and inventory.
-    print("You are in the " + room)
+    print(f"You are in the [room}")
     print("Inventory: " + str(current_inventory)) 
 
     # Define non-direction keys to filter out from room connections.
