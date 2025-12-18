@@ -3,7 +3,8 @@ import sys
 from movement import get_new_room 
 from interface import show_status, show_instructions 
 from item_management import pick_up_item    
-from combat import check_combat 
+#from combat import check_combat
+## TODO: Implement combat trigger
 
 # Main function to run the game loop.
 def main():
@@ -37,7 +38,7 @@ def main():
             pick_up_item(user_input, current_room, inventory) 
 
         # Display available commands when called by the user.
-        elif user_input == 'command' or user_input == 'commands':
+        elif user_input in ['command', 'commands', 'help']:
             print("Available Commands: 'go [direction]', 'get [item]', 'quit'") 
 
         # If none of the above, notify user of invalid command.
