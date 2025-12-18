@@ -8,6 +8,8 @@ from interface import show_status, show_instructions # Import the show_status fu
 
 from item_management import pick_up_item    #Import the pick_up_item function from the item_management module.
 
+from combat import check_combat #Import the check_combat function from the combat module.
+
 def main(): # Main function to run the game loop.
 
 
@@ -33,7 +35,7 @@ def main(): # Main function to run the game loop.
 
         elif user_input.startswith('go '): # Move to a new room
             # Capture the returned room!
-            current_room = get_new_room(user_input, current_room) 
+            current_room = get_new_room(user_input, current_room)
 
         elif user_input.startswith('get '): # Pick up item
             # Pass the list 'inventory' which is mutable, so it updates automatically
