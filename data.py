@@ -29,7 +29,7 @@ ROOMS = {
     },
     # Define the Secret Chamber room and sword item.
     'secret chamber': {    
-        'west': 'dungeon', 
+        'south': 'dungeon', 
         'item': 'sword of gilathis',  
     },
 }
