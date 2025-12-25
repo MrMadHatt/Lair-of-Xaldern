@@ -17,17 +17,19 @@ def main():
 
     show_instructions() 
 
+    player_health = 100
+
     # --- Game Loop ---
     while game_status == 'playing': 
 
-        show_status(current_room, inventory)
+        show_status(current_room, inventory, player_health)
         
         user_input = input("> ").lower().strip() 
 
         # --- Game Logic ---
         if user_input == 'quit':
             game_status = 'quit' 
-            print("Thanks for playing! Goodbye.")
+            print("Til next time hero. Thanks for playing!")
 
         # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '): 

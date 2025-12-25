@@ -2,7 +2,12 @@
 from data import ROOMS
 
     #Logic to display the player's current status.
-def show_status(room, current_inventory): 
+def show_status(room, current_inventory, player_health):
+    
+    #Display player's health using heart symbols.
+    num_hearts = player_health // 10
+    health_display = ("\u2665" + " ") * num_hearts
+    print(f"Health: {health_display}") 
 
     # Print a separator line for better readability.
     print("\n------------------------------------------------" )
