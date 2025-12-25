@@ -13,23 +13,23 @@ def main():
     # Initialize game variables.
     current_room = 'elaborate entrance hall' 
     inventory = [] 
-    game_status = 'playing' 
+    game_status = 'playing'
+    player_health = 100
 
     show_instructions() 
 
-    player_health = 100
 
     # --- Game Loop ---
     while game_status == 'playing': 
 
         show_status(current_room, inventory, player_health)
         
-        user_input = input("> ").lower().strip() 
+        user_input = input("> ").lower().strip()
 
         # --- Game Logic ---
         if user_input == 'quit':
             game_status = 'quit' 
-            print("Til next time hero. Thanks for playing!")
+            print("Til' next time hero. Thanks for playing!")
 
         # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '): 
@@ -38,6 +38,7 @@ def main():
         # Check if user input starts with 'get ' to pick up an item.
         elif user_input.startswith('get '):
             pick_up_item(user_input, current_room, inventory) 
+
 
         # Display available commands when called by the user.
         elif user_input in ['command', 'commands', 'help']:
