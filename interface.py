@@ -1,12 +1,17 @@
     # Import necessary data from the data module.
-from data import ROOMS
-#from format import format_item_name format_room_name
-  
-    #Logic to display the player's current status.
+import json
+
+try:
+    with open("world.json", "r") as f:
+        ROOMS = json.load(f)
+except FileNotFoundError:
+    ROOMS = {}
+
+#Logic to display the player's current status.
 def show_status(room, current_inventory, player_health):
 
-    display_room = room.title(room)
-    display_inventory = [item_name(item) for item in current_inventory]
+    display_room = room.title()
+    display_inventory = [item.title() for item in current_inventory]
 
     health_bar = ("\u2665" + " ") * (player_health // 10)
 

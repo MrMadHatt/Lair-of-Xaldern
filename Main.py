@@ -1,6 +1,6 @@
 #importing necessary modules
 import sys
-from movement import get_new_room 
+import movement
 from interface import show_status, show_instructions 
 from item_management import pick_up_item    
 #from combat import check_combat
@@ -33,7 +33,7 @@ def main():
 
         # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '): 
-            current_room = get_new_room(user_input, current_room)
+            current_room = movement.get_new_room(user_input, current_room)
 
         # Check if user input starts with 'get ' to pick up an item.
         elif user_input.startswith('get '):

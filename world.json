@@ -1,0 +1,28 @@
+ {
+    "elaborate entrance hall": {    
+        "north": "library",    
+        "east": "kitchen",  
+        "south": "royal courtyard",   
+        "west": "dungeon" 
+    },
+    "library": {    
+        "south": "elaborate entrance hall",   
+        "item": "potion of strength"   
+    },
+    "kitchen": {
+        "west": "elaborate entrance hall", 
+        "item": "vial of xaldern" 
+    },
+    "royal courtyard": {    
+        "north": "elaborate entrance hall", 
+        "object": "three-headed dragon" 
+    },
+    "dungeon": {    
+        "east": "elaborate entrance hall", 
+        "south": "secret chamber"
+    },
+    "secret chamber": {    
+        "south": "dungeon", 
+        "item": "sword of gilathis"  
+    }
+}
