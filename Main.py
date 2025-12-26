@@ -4,7 +4,7 @@ from movement import get_new_room
 from interface import show_status, show_instructions 
 from item_management import pick_up_item    
 #from combat import check_combat
-## TODO: Implement combat trigger
+
 
 # Main function to run the game loop.
 def main():
@@ -29,7 +29,7 @@ def main():
         # --- Game Logic ---
         if user_input == 'quit':
             game_status = 'quit' 
-            print("Til' next time hero. Thanks for playing!")
+            print("Til' next time, Hero. Thanks for playing!")
 
         # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '): 

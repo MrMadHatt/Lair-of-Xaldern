@@ -1,0 +1,24 @@
+    -TODO:
+- [] Move format functions from interface.py to format.py
+- [] Implement combat trigger.
+- [] Implement combat scenario handling.
+- [] Import combat module and integrate combat checks in the game loop.
+- [] Implement damage calculation and enemy health tracking.
+- [] Add player stats and leveling system.
+- [] Allow ability to drop items from inventory - sync with room data structure.
+- [] Add more rooms with enemies.
+- [] Add health management system and death conditions.
+- [] Add ability to use items in and out of combat. 
+- [] Add enemy encounters in specific randomized rooms. 
+- [] Begin narrative elements for story progression. 
+- [] Add GUI elements for visual engagement. 
+- [] Import character module for visual representation of player/enemies. 
+- [] Import database module for saving/loading game states.
+- [] Implement the save/load functionality.
+- [] Add sound effects and background music for immersion (only if GUI is implemented).
+- [] Add NPC interactions and dialogues. 
+- [] Add player choices and branching storylines.
+- [] Allow player to make choices that affect the story outcome.
+- [] Include side/optional quests (1-3) for extended gameplay.
+- [] Allow player to view stats and quest log.
+- [] Implement puzzle mechanics in randomized rooms. 

@@ -1,11 +1,12 @@
     # Import necessary data from the data module.
 from data import ROOMS
-
+#from format import format_item_name format_room_name
+  
     #Logic to display the player's current status.
 def show_status(room, current_inventory, player_health):
 
-    display_room = room.title()
-    display_inventory = [item.title() for item in current_inventory]
+    display_room = room.title(room)
+    display_inventory = [item_name(item) for item in current_inventory]
 
     health_bar = ("\u2665" + " ") * (player_health // 10)
 
@@ -31,7 +32,7 @@ def show_status(room, current_inventory, player_health):
     if 'item' in ROOMS[room]:
         item_name = ROOMS[room]['item']     
         if item_name not in current_inventory: 
-            print("You see a {item_name.title()} here.")
+            print(f'You see a {item_name.title()} here.')
 
 
     # Function to show game instructions to the player.
