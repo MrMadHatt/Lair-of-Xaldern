@@ -33,12 +33,12 @@ Interact with objects found in various rooms.
 * **Pick up items:** `Get [Item Name]` (e.g., `Get Key`)
 * **View Status:** Your current location and inventory are displayed at the top of every turn.
 
-### 🛠 System Commands
+### System Commands
 * **Exit:** Type `Quit` at any time to end your session.
 
 ---
 
-## 🏗️ Technical Architecture
+## Technical Architecture
 This project implements several key software engineering principles:
 
 * **Modular Design:** Logic is decoupled into specific modules (`main.py`, `movement.py`, `interface.py`) to adhere to the **Separation of Concerns** principle.
@@ -48,7 +48,7 @@ This project implements several key software engineering principles:
 
 ---
 
-## 🗺️ Roadmap & Future Development
+## Roadmap & Future Development
 - [ ] **Data Externalization:** Transition room data to `.json` files for easier content management.
 - [ ] **Persistence Layer:** Implement Save/Load functionality using the `json` library.
 - [ ] **OOP Refactor:** Transition combat and NPC logic into dedicated classes.
@@ -56,7 +56,7 @@ This project implements several key software engineering principles:
 
 ---
 
-## 📜 License
+## License
 Distributed under the **MIT License**.
 
 ---
@@ -64,7 +64,6 @@ Distributed under the **MIT License**.
 **Author:** [Dominiq Barbero | github.com/mrmadhatt]
 
 ---
-
 
 # Why I Built This
 
@@ -89,11 +88,5 @@ Clean Interface: Clear text prompts to guide the user through the experience.
 The Global Variable Hurdle: Initially, I struggled with how functions access data. I learned how to pass variables correctly to maintain a "clean" global state.
 
 Infinite Loops: I had to debug several instances where the game wouldn't exit properly, which taught me a lot about while loop conditions.
-
-# Future Roadmap
-
-[ ] Add a "Battle" class to practice Object-Oriented Programming (OOP).
-
-[ ] Implement a Save/Load feature using JSON.
 
 
