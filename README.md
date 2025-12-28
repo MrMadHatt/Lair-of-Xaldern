@@ -78,12 +78,22 @@ State Tracking: Ensuring the program "remembers" what is in the player's invento
 
 Input Validation: Handling unpredictable user text to prevent the program from crashing.
 
-##  Current Features (The "Build" so far)
-Dynamic Movement: A 5-room map where the user can move North, South, East, or West.
+## Current Features
 
-Inventory System: Logic to check for items, add them to a list, and update the game state.
-
-Clean Interface: Clear text prompts to guide the user through the experience.
+* **Modular Engine Architecture**: Game logic is decoupled into specialized modules (`movement.py`, `item_management.py`, `interface.py`), ensuring clean, maintainable, and dry (Don't Repeat Yourself) code.
+* **Data-Driven World Design**: The entire game universe is defined in a external `world.json` file. This allows for world expansion and map editing without modifying the core Python logic.
+* **Dynamic Inventory System**: 
+    * Supports multiple items per room.
+    * Features case-insensitive command processing.
+    * State-persistent: Items are removed from the world data once added to the player's inventory.
+* **Intelligent Navigation**: 
+    * Validates moves against the JSON map.
+    * Automatically detects and displays available exits to the player.
+    * Includes a "whitelist" direction filter to prevent metadata from leaking into the UI.
+* **Polished HUD & Interface**: 
+    * **Visual Health Bar**: Uses Unicode characters (`♥`) for a classic RPG feel.
+    * **Auto-Formatting**: Automatically capitalizes room and item names for a consistent look.
+    * **Status Tracking**: Real-time display of location, inventory contents, and vitals.
 
 ##  Technical Challenges & Lessons Learned
 The Global Variable Hurdle: Initially, I struggled with how functions access data. I learned how to pass variables correctly to maintain a "clean" global state.
