@@ -1,14 +1,5 @@
-# Import the ROOMS data structure from the data module.
-import json
-
-try:
-    with open("world.json", "r") as f:
-        ROOMS = json.load(f)
-except FileNotFoundError:
-    ROOMS = {}
-
 #logic for picking up items.
-def pick_up_item(user_input, room, current_inventory):
+def pick_up_item(user_input, room, current_inventory, ROOMS):
     parts = user_input.lower().split()
 
 # Check if the user input starts with 'get ' to pick up an item.
@@ -17,16 +8,16 @@ def pick_up_item(user_input, room, current_inventory):
             print("\nGet what?")
             return
         
-        item_to_get = user_input.split(' ', 1)[1] 
+        item_to_get = user_input.split(' ', 1)[1].lower().strip() 
 
 #Check if the item is present in the current room and not already in inventory.
-        if 'item' in ROOMS[room] and item_to_get.lower() == ROOMS[room]['item'].lower():
-            official_name = ROOMS[room]['item'] 
-            current_inventory.append(official_name) 
+        room_items = ROOMS[room].get('items', [])
 
-# Remove the item from the room after picking it up.
-            del ROOMS[room]['item']  
-            print(f"\n** {official_name} has been added to your inventory! **")
+        match = next((i for i in room_items if i.lower() == item_to_get), None)
 
+        if match:
+            current_inventory.append(match) 
+            room_items.remove(match)
+            print(f"\n** {match.title()} has been added to your inventory! **")
         else:
             print(f"\nThere is no {item_to_get} here!")

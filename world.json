@@ -1,28 +1,100 @@
  {
-    "elaborate entrance hall": {    
-        "north": "library",    
-        "east": "kitchen",  
-        "south": "royal courtyard",   
-        "west": "dungeon" 
+    "starting point": {
+        "north" : "blocked entrance",
+        "east" : "path 2",
+        "south" : "path 1",
+        "west" : "path 3",
+        "items" : ["dull sword", "hunter's bow", "simple staff"]
     },
-    "library": {    
-        "south": "elaborate entrance hall",   
-        "item": "potion of strength"   
+     "path 1": {
+        "north" : "starting point",
+        "east" : null,
+        "west" : null,
+        "south" : null,
+        "items" : ["deaths curse"]
+    },"path 2": {
+        "north" : null,
+        "east" : null,
+        "south" : null,
+        "west" : "starting point",
+        "items" : ["potion of strength"]
     },
-    "kitchen": {
-        "west": "elaborate entrance hall", 
-        "item": "vial of xaldern" 
+    "path 3": {
+        "north" : null,
+        "east" : "starting point",
+        "south" : null,
+        "west" : null,
+        "items" : ["small potion"]
+    },
+    "blocked entrance": {
+        "north" : "blocked pathway",
+        "east" : null,
+        "south" : "starting point",
+        "west" : null
+    },
+    "blocked pathway": {
+        "north": null,
+        "east" : "pathway 01",
+        "south" : "blocked entrance",
+        "west" : "forest entrance"
+    },
+    "pathway 01": {
+        "north" : "side path 01",
+        "east" : "town",
+        "south" : "side path 02",
+        "west" : "blocked pathway"
+    },
+    "town": {
+        "north" : "blocked pathway 02",
+        "east" : null,
+        "south" : null,
+        "west" : "pathway 01"
+    },
+    "blocked pathway 02":{
+        "north" : "royal courtyard",
+        "east" : null,
+        "south" : "town",
+        "west" : null
     },
     "royal courtyard": {    
-        "north": "elaborate entrance hall", 
-        "object": "three-headed dragon" 
+        "north" : "elaborate entrance hall",
+        "south" : "blocked pathway 02", 
+        "object" : "three-headed dragon"
     },
+    "elaborate entrance hall": {    
+        "north" : "hallway",    
+        "east" : "kitchen",  
+        "south" : "royal courtyard",   
+        "west" : "dungeon" 
+    },
+    "hallway": {
+        "north" : "grand library",
+        "east" : null,
+        "south" : "elaborate entrance hall",
+        "west" : null
+    },
+    "grand library": {    
+        "south" : "hallway",   
+        "items" : ["potion of strength"]  
+    },
+    "kitchen": {
+        "west" : "elaborate entrance hall", 
+        "items" : ["vial of xaldern"]
+    },
+    
     "dungeon": {    
-        "east": "elaborate entrance hall", 
-        "south": "secret chamber"
+        "east" : "elaborate entrance hall", 
+        "south" : "secret chamber",
+        "is_locked" : true,
+        "required_key" : true,
+        "key_name_to_unlock" : "dungeon key"  
     },
     "secret chamber": {    
-        "south": "dungeon", 
-        "item": "sword of gilathis"  
+        "south" : "dungeon",
+        "is_locked" : true,
+        "required_key" : true,
+        "key_name" : "secret chamber key",
+        "locked_direction" : "dungeon", 
+        "items" : ["sword of gilathis"]  
     }
 }

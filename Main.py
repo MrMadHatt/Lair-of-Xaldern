@@ -2,16 +2,19 @@
 import sys
 import movement
 from interface import show_status, show_instructions 
-from item_management import pick_up_item    
+from item_management import pick_up_item
+import json 
 #from combat import check_combat
 
+with open("world.json", "r") as f:
+    ROOMS = json.load(f)
 
 # Main function to run the game loop.
 def main():
 
 
     # Initialize game variables.
-    current_room = 'elaborate entrance hall' 
+    current_room = 'starting point' 
     inventory = [] 
     game_status = 'playing'
     player_health = 100
@@ -22,7 +25,7 @@ def main():
     # --- Game Loop ---
     while game_status == 'playing': 
 
-        show_status(current_room, inventory, player_health)
+        show_status(current_room, inventory, player_health, ROOMS)
         
         user_input = input("> ").lower().strip()
 
@@ -33,11 +36,11 @@ def main():
 
         # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '): 
-            current_room = movement.get_new_room(user_input, current_room)
+            current_room = movement.get_new_room(user_input, current_room, ROOMS)
 
         # Check if user input starts with 'get ' to pick up an item.
         elif user_input.startswith('get '):
-            pick_up_item(user_input, current_room, inventory) 
+            pick_up_item(user_input, current_room, inventory, ROOMS) 
 
 
         # Display available commands when called by the user.
