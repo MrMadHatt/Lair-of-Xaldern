@@ -1,8 +1,8 @@
 #importing necessary modules
 import sys
-import movement
-from interface import show_status, show_instructions 
-from item_management import pick_up_item
+import engine.movement as movement
+import engine.interface as interface
+import engine.item_management as item_management
 import sqlite3
 import os
 ##from combat import check_combat
@@ -11,7 +11,7 @@ import os
 def load_game_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.dirname(current_dir)
-    DB_PATH = os.path.join(base_dir, 'data', 'game_data.db')
+    DB_PATH = os.path.join(os.getcwd(), 'data', 'game_data.db')
 
     try:
         conn = sqlite3.connect(DB_PATH)
@@ -59,59 +59,60 @@ def main():
     game_status = 'playing'
     player_health = 100
 
-    show_instructions() 
+    interface.show_instructions() 
 
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'game_data.db')
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
 
     # --- Game Loop ---
     while game_status == 'playing': 
-
+        # 1. Update current room data from the ROOMS dictionary
         current_room_data = ROOMS.get(current_room_id)
-
-        #temp debug line
-        print(f"DEBUG: Current Room Items: {current_room_data.get('items')}")
-
+        
         if not current_room_data:
-            print(f"Error: Room {current_room_id} not found in database!")
+            print(f"Error: Room {current_room_id} not found!")
             break
 
-        show_status(current_room_data, inventory, player_health, ROOMS)
+        # 2. Show the interface (Calling the function, not defining it)
+        interface.show_status(current_room_data, inventory, player_health, cursor)
         
-        user_input = input("> ").lower().strip()
+        # 3. Get Input
+        user_input = input("\n> ").lower().strip()
 
-        # --- Game Logic ---
+        # --- Game Logic (All correctly indented inside the loop now) ---
         if user_input == 'quit':
             game_status = 'quit' 
             print("Til' next time, Hero. Thanks for playing!")
 
-        # Check if user input starts with 'go ' to move to a new room.
         elif user_input.startswith('go '):
-            old_id = current_room_id
             new_id = movement.get_new_room(user_input, current_room_id, ROOMS)
             if new_id:
                 current_room_id = new_id
-
-            if old_id != current_room_id:
                 print("\n" + "="*20)
 
-        # Check if user input starts with 'get ' to pick up an item.
         elif user_input.startswith('get '):
-            pick_up_item(user_input, current_room_data, inventory) 
+            item_name = user_input.replace('get ', '').strip().lower()
+            
+            # 1. Remove from Database
+            item_management.pick_up_item(conn, user_input, current_room_id, inventory)
+    
+            # 2. Remove from Local Memory
+            if 'items' in current_room_data:
+                current_room_data['items'] = [i for i in current_room_data['items'] if i.lower() != item_name]
+            
+        elif user_input in ['help', 'commands']:
+            interface.show_instructions()
 
-
-        # Display available commands when called by the user.
-        elif user_input in ['command', 'commands', 'help']:
-            print("Available Commands: 'go [direction]', 'get [item]', 'quit'") 
-        
-        # Check current inventory.
         elif user_input in ['inventory', 'i']:
-            if not inventory:
-                print("\nYour inventory is empty.")
-            else:
-                print("\n🎒 Your Inventory: " + ", ".join(inventory))
+            print(f"\n🎒 Inventory: {', '.join(inventory) if inventory else 'Empty'}")
 
-        # If none of the above, notify user of invalid command.
         else:   
             print("Invalid Command.") 
+
+    # --- End of while loop ---
+    conn.close() 
 
     # Main game loop ends here.
 if __name__ == '__main__':
