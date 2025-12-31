@@ -1,9 +1,18 @@
+# Python environment and cache
 __pycache__/
 .venv/
+.env
+
+# System files
 .DS_Store
+
+# IDE and Design files
 local-Projects/
+*.canvas
+
+# Database (Exclude the binary to keep the repo data-driven)
 data/*.db
+
+# Design Files
 design/*
 !design/02-world/
-*.canvas
-!data/game_data.db
