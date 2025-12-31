@@ -6,10 +6,11 @@ south: "115"
 east: "110"
 west: "null"
 item_id: "[]"
-is_locked: "true"
-required_key: "true"
+is_locked: "false"
+required_key: "false"
 key_name: "[dungeon_key]"
 ---
 ---
 Description: " "
 See: [[Dungeon_Structure]]
+Dev Notes: add "[dungeon_key]" to unlock Secret Chamber.

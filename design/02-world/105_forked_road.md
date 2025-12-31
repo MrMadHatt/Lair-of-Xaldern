@@ -3,9 +3,9 @@ location_id: "105"
 name: '"Forked Road"'
 type: location
 north: "null"
-east:
+east: "106"
 south: "104"
-west:
+west: "null"
 status: "finished"
 ---
 

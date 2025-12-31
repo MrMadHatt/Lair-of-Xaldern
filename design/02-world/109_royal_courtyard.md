@@ -7,8 +7,6 @@ south: "108"
 west: "null"
 is_locked: "false"
 required_key: "false"
-locked_direction: "110"
-npc_id: "10"
 status: "finished"
 ---
 ---

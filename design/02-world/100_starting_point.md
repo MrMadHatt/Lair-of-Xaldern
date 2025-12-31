@@ -6,7 +6,7 @@ north: "104"
 east: "102"
 south: "101"
 west: "103"
-contains_items:
+items:
   - "01"
   - "02"
   - "03"

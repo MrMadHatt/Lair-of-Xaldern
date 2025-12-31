@@ -1,10 +1,10 @@
 ---
 location_id: "110"
 name: "Elaborate Entrance Hall"
-north: "[[112_hallway]]"
-east: "[[111_kitchen_01]]"
+north: "112"
+east: "111"
 south: "109"
-west: "[[114_dungeon]]"
+west: "114"
 is_locked: "false"
 required_key: "false"
 key_name:

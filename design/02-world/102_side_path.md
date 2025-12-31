@@ -1,14 +1,14 @@
 ---
-npc_id: location_102
+location_id: "102"
 name: '"Side Path"'
 type: location
 north: "null"
 east: "null"
 south: "null"
 west: "100"
-item_id:
+items:
   - "104"
-status: "unfinished"
+status: "finished"
 ---
 ---
 

@@ -43,6 +43,10 @@ def sync_data():
     setup_database()
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
+    
+    # Disable foreign keys temporarily so the order of files doesn't matter
+    cursor.execute("PRAGMA foreign_keys = OFF;")
+    
     print(f"--- Starting Sync from {DATA_FOLDER} ---")
     
     IGNORE_LIST = ['room templates.md', 'roomtemplates.md']
@@ -57,11 +61,9 @@ def sync_data():
         filename = os.path.basename(file_path)
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-            # MODIFIED REGEX: More flexible with whitespace and line endings
             match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL | re.MULTILINE)
             
             if not match:
-                # If you see this, your "---" markers might have spaces after them!
                 print(f"⚠️  Skipping {filename}: No valid YAML frontmatter found.")
                 continue
 
@@ -77,7 +79,6 @@ def sync_data():
                     continue
                 
                 if status != 'finished':
-                    # This tells you exactly which files are being ignored by the 'finished' filter
                     print(f"🚧 Skipping {filename}: Status is '{status}'.")
                     continue
 
@@ -94,6 +95,17 @@ def sync_data():
                     cursor.execute('''INSERT OR REPLACE INTO rooms (id, name, north, south, east, west, is_locked, status) 
                                     VALUES (?,?,?,?,?,?,?,?)''',
                                  (entry_id, room_name, n, s, e, w, doc.get('is_locked', 0), status))
+                    
+                    # Link items to rooms
+                    cursor.execute("DELETE FROM room_items WHERE room_id = ?", (entry_id,))
+                    item_list = doc.get('items') or doc.get('contains_items')
+                    
+                    if item_list and isinstance(item_list, list):
+                        for item_raw in item_list:
+                            item_id = clean_id(item_raw)
+                            if item_id is not None:
+                                cursor.execute("INSERT INTO room_items (room_id, item_id) VALUES (?, ?)",
+                                             (entry_id, item_id))
                     print(f"📍 Room {entry_id} ({room_name}) synced.")
 
                 elif etype in ['item', 'weapon', 'consumable']:
@@ -107,7 +119,9 @@ def sync_data():
             except Exception as e:
                 print(f"❌ Error in {filename}: {e}")
 
+    # Finalize everything
     conn.commit()
+    cursor.execute("PRAGMA foreign_keys = ON;")
     conn.close()
     print("--- Sync Complete! ---")
 

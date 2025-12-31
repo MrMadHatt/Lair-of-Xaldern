@@ -1,29 +1,24 @@
-#Logic for moving between rooms.
-def get_new_room(user_move, current_room, ROOMS): 
-    move = user_move.lower().strip()
+def get_new_room(user_input, current_room_id, rooms_list): 
+    direction = user_input.replace('go', '').strip().lower()
+    current_room_data = rooms_list.get(current_room_id)
 
-    # Check if the user input starts with 'go ' to move to a new room.
-    if move.startswith('go '):
-        parts = move.split()
+    if not current_room_data:
+        print("Error: Location data missing.")
+        return current_room_id
+            
+    destination_id = current_room_data.get(direction)   
 
-        if len(parts) >= 2:
-            direction = parts[1]
-
-            # Use .get() to avoid crashing if 'direction' isn't in the room data.
-            destination = ROOMS[current_room].get(direction)   
-
-            # Check if the direction is valid for the current room.
-            if destination in ROOMS:
-                return destination
+    if destination_id is not None and destination_id in rooms_list:
+        dest_room_data = rooms_list[destination_id]
         
-            #Notify the player of an invalid move.
-            else:
-                if destination in [None, "null", " "]:
-                               print("YOU SHALL NOT PASS!")
-                else:
-                    print(f"The path to '{destination}' is under construction! ")
-            
-                return current_room
-            
-            # Return the current room if the move is invalid.
-        return current_room 
+        # This compensates for unfinished rooms!
+        if dest_room_data.get('status') != 'finished':
+            print(f"The path {direction} leads to a place still under construction...")
+            return current_room_id
+
+        print(f"You head {direction}...")
+        return destination_id
+        
+    else:
+        print("YOU SHALL NOT PASS! There is no path that way.")
+        return current_room_id

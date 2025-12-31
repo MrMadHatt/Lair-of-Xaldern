@@ -2,7 +2,7 @@
 location_id: "104"
 name: '"Blocked Entrance"'
 type: location
-north: "null"
+north: "105"
 east: "null"
 south: "100"
 west: "null"

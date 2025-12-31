@@ -6,9 +6,9 @@ north: "100"
 east: "null"
 south: "null"
 west: "null"
-item_id:
+items:
   - "101"
-status: "unfinished"
+status: "finished"
 ---
 ---
 Description: " "
