@@ -1,10 +1,18 @@
-#Logic to display the player's current status.
-def show_status(room_data, current_inventory, player_health, ROOMS):
+import engine.item_management as item_mgr
 
-    display_room = str(room_data.get('name', 'Unknown')).title()
+def format_item_name(name):
+    """Fixes capitalization, specifically handling apostrophes correctly."""
+    if not name:
+        return ""
+    # title() turns "hunter's" into "Hunter'S"
+    # we replace "'S" back to "'s"
+    return name.title().replace("'S", "'s")
+
+#Logic to display the player's current status.
+def show_status(room_data, current_inventory, player_health, cursor):
+
     room_name = room_data.get('name', 'Unknown Location')
     display_inventory = [item.title() for item in current_inventory]
-
     health_bar = ("\u2665" + " ") * (player_health // 10)
 
     print("-" * 40)
@@ -25,12 +33,16 @@ def show_status(room_data, current_inventory, player_health, ROOMS):
         if room_data.get(direction) not in [None, "null", "", 0]
     ]
     # Display available exits from the current room.
-    print("\nExits: " + ", ".join(available_moves)) 
+    print("\nExits: " + ", ".join(available_moves))
+
+    #ask the item manager to find items linked to this room ID in the DB
+    room_items = item_mgr.get_room_items(cursor, room_data['id']) 
 
     # Check and display any items present in the current room.
     if room_data.get('items'):
-        for item_name in room_data['items']:     
-            print(f"You see a {str(item_name).title()} here.")
+        for item in room_data['items']:
+            display_name = item.title().replace("'S", "'s")     
+            print(f"You see a {format_item_name(item)} here.")
 
 
     # Function to show game instructions to the player.
