@@ -5,10 +5,10 @@ north: "null"
 east: "null"
 south: "110"
 west: "null"
-contains_items:
-  - "104"
-is_locked: "false"
-required_key: "false"
+items:
+  - "107"
+is_locked: "0"
+required_key: "0"
 status: "finished"
 ---
 ---

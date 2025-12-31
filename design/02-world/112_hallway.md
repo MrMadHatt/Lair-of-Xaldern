@@ -5,8 +5,8 @@ north: "113"
 east: "null"
 south: "110"
 west: "null"
-contains_items: "[]"
-is_locked: "false"
+items: "101"
+is_locked: "0"
 status: "finished"
 ---
 ---

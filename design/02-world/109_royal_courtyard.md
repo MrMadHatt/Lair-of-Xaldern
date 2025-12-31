@@ -5,8 +5,8 @@ north: "110"
 east: "null"
 south: "108"
 west: "null"
-is_locked: "false"
-required_key: "false"
+is_locked: "0"
+required_key: "0"
 status: "finished"
 ---
 ---

@@ -5,7 +5,7 @@ north: "null"
 east: "null"
 south: "null"
 west: "110"
-is_locked: "false"
+is_locked: "0"
 contains_item: "07"
 status: "finished"
 ---
