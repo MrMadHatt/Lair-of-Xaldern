@@ -27,7 +27,8 @@ python tools/data_sync.py
 
 python engine/Main.py
 
-```markdown
+```
+
 ## 🛠️ Engineering Highlights & Technical Principles
 
 ### **Relational Data Persistence**
