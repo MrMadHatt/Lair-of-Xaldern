@@ -27,23 +27,22 @@ python tools/data_sync.py
 
 python engine/Main.py
 
----
-
-### Part 4: Engineering Highlights (The "Portfolio" Section)
 ```markdown
-## 🛠️ Engineering Highlights & Principles
+## 🛠️ Engineering Highlights & Technical Principles
 
 ### **Relational Data Persistence**
-Transitioned from JSON to a **relational SQLite database**. This allows for complex queries, such as Join Tables for room-item relationships, ensuring that game state changes (like picking up an item) are persistent and memory-efficient.
+The engine utilizes a **relational SQLite database**. This allows for complex queries, such as Join Tables for room-item relationships, ensuring that game state changes (like picking up an item) are persistent and memory-efficient.
 
 ### **Automated Data Pipeline**
 Implemented a custom parser in `data_sync.py` that automates the transition from narrative design to structured data. This pipeline handles:
-- Sanitizing YAML frontmatter.
-- Mapping Markdown links to relational IDs.
-- Filtering "draft" content to ensure only polished world-data is synchronized.
+* **Sanitization**: Cleaning YAML frontmatter for database entry.
+* **Mapping**: Converting Markdown internal links to relational Foreign Keys.
+* **Filtering**: Excluding draft content to ensure a stable production environment.
 
 ### **Input Sanitization & UI**
-The engine features a robust text-parser that handles case-sensitivity, whitespace, and "fuzzy" matching, providing a resilient interface for the end-user. The HUD is dynamically rendered to provide real-time feedback on player vitals and spatial positioning.
+The engine features a robust text-parser that handles case-sensitivity, whitespace, and "fuzzy" matching. The HUD is dynamically rendered to provide real-time feedback on player vitals and spatial positioning.
+
+---
 
 ## 📈 Development Roadmap
 - [x] **Relational Migration**: Transitioned from flat-file JSON to SQLite.
@@ -51,10 +50,4 @@ The engine features a robust text-parser that handles case-sensitivity, whitespa
 - [ ] **Inventory Persistence**: Implementing the "Get" logic to update relational tables.
 - [ ] **Object-Oriented Refactor**: Transitioning room and player entities into Class structures.
 
-## 🧠 Why I Built This
-This project was designed to solve three specific engineering challenges:
-1.  **State Management**: Maintaining a consistent world-state across multiple Python modules.
-2.  **Data Scalability**: Ensuring the game can grow to 1,000+ rooms without requiring code changes.
-3.  **Relational Logic**: Understanding how to map a physical environment using foreign keys and join tables.
-
-**Author:** [Dominiq Barbero | github.com/mrmadhatt]
+**Author:** [Dominiq Barbero | [github.com/mrmadhatt](https://github.com/mrmadhatt)]
