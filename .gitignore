@@ -3,5 +3,5 @@ __pycache__/
 .DS_Store
 local-Projects/
 data/*.db
-design/
+design/*
 !design/02-world/
