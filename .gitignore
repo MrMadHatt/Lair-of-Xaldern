@@ -5,3 +5,4 @@ local-Projects/
 data/*.db
 design/*
 !design/02-world/
+*.canvas
