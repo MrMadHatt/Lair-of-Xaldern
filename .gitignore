@@ -1,5 +1,7 @@
 __pycache__/
 .venv/
-local-Projects/
 .DS_Store
-**/.DS_Store
+local-Projects/
+data/*.db
+design/
+!design/02-world/

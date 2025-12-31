@@ -4,14 +4,29 @@ import movement
 from interface import show_status, show_instructions 
 from item_management import pick_up_item
 import json 
-#from combat import check_combat
+import os
+##from combat import check_combat
 
-with open("world.json", "r") as f:
-    ROOMS = json.load(f)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+base_dir = os.path.dirname(current_dir)
+
+DATA_PATH = os.path.join(base_dir, 'data', 'world.json')
+
+
+def load_game_data():
+    try:
+        with open(DATA_PATH, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: Could not find world.json at {DATA_PATH}")
+        return None
 
 # Main function to run the game loop.
 def main():
-
+    ROOMS = load_game_data()
+    if ROOMS is None:
+        return
 
     # Initialize game variables.
     current_room = 'starting point' 
