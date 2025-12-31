@@ -27,6 +27,8 @@ python tools/data_sync.py
 
 python engine/Main.py
 
+---
+
 ### Part 4: Engineering Highlights (The "Portfolio" Section)
 ```markdown
 ## 🛠️ Engineering Highlights & Principles
