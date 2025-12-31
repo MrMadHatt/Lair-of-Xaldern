@@ -1,6 +1,6 @@
 ---
 location_id: "110"
-name: '"Elaborate Entrance Hall"'
+name: "Elaborate Entrance Hall"
 north: "[[112_hallway]]"
 east: "[[111_kitchen_01]]"
 south: "109"

@@ -6,3 +6,4 @@ data/*.db
 design/*
 !design/02-world/
 *.canvas
+!data/game_data.db
