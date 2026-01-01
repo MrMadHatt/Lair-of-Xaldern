@@ -1,13 +1,14 @@
 ---
 location_id: "109"
 name: '"Royal Courtyard"'
+type: location
 north: "110"
 east: "null"
 south: "108"
 west: "null"
 is_locked: "0"
 required_key: "0"
-status: "finished"
+status: finished
 ---
 ---
 Description: " "

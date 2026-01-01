@@ -7,7 +7,7 @@ melee_damage: 1
 ranged_damage: 21
 range: 30
 value: 15
-weight: 8
+weight: 7
 description:
 status: finished
 ---

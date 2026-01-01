@@ -1,6 +1,7 @@
 ---
 location_id: "111"
 name: '"Kitchen"'
+type: location
 north: "null"
 east: "null"
 south: "null"
@@ -13,3 +14,4 @@ status: finished
 ---
 Description: " "
 See: [[Kitchen_Structure]] | [[1007_vial_of_ xaldern]]
+Dev Notes:

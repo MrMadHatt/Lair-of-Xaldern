@@ -7,7 +7,7 @@ melee_damage: 1
 ranged_damage: 14
 range: 26
 value: 12
-weight: 6
+weight: 5
 is_consumable: false
 description:
 status: finished

@@ -1,6 +1,7 @@
 ---
 location_id: "115"
 name: '"Secret Chamber"'
+type: location
 north: "114"
 east: "null"
 south: "null"
@@ -10,8 +11,9 @@ is_locked: "false"
 required_key: "false"
 key_name: "[secret_chamber_key]"
 locked_direction: "0"
+status: finished
 ---
 ---
 Description: " "
-
 See: [[Secret_Chamber_structure]] | [[10_sword_of_gilathis]]
+Dev Notes:

@@ -9,6 +9,7 @@ west: "null"
 items:
   - "1001"
 status: finished
+spawn: "[500]"
 ---
 ---
 Description: " "

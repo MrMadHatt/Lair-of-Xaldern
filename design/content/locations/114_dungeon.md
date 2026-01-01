@@ -1,6 +1,7 @@
 ---
 location_id: "114"
 name: '"Dungeon"'
+type: location
 north: "null"
 south: "115"
 east: "110"
@@ -9,6 +10,7 @@ items: "[]"
 is_locked: "false"
 required_key: "false"
 key_name: "[dungeon_key]"
+status: finished
 ---
 ---
 Description: " "
