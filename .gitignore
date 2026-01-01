@@ -15,4 +15,4 @@ data/*.db
 
 # Design Files
 design/*
-!design/02-world/
+!design/content/
