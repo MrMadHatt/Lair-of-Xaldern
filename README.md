@@ -56,7 +56,6 @@ To avoid "Externally Managed Environment" errors, utilize a virtual environment:
 ### 3. Engineering Highlights and Roadmap
 This section communicates the high-level technical skills utilized in the project.
 
-```markdown
 ## 🛠️ Engineering Highlights & Technical Principles
 
 ### **Relational Data Persistence**
