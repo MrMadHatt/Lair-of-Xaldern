@@ -16,7 +16,7 @@
 - [ ] Import combat module and integrate checks in the game loop
 - [ ] Implement damage calculation and enemy health tracking
 - [ ] Add health management system and death conditions
-- [ ] Add enemy encounters in specific randomized rooms
+- [ ] Add enemy encounters in specific rooms
 
 ## World & Inventory 🗺️
 - [ ] Add more rooms with enemies
