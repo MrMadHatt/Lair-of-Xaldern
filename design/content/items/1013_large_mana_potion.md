@@ -4,8 +4,8 @@ item_id:
 name: Large Mana Potion
 type: consumable
 mana: "20"
-is_consumable: true
 value: 20
+is_consumable: true
 weight: 0
 description:
 status: finished

@@ -1,7 +1,7 @@
 import sqlite3
 
 def load_player_stats(cursor):
-    """Loads basic player stats. If no player exists, creates a default one."""
+    #Loads basic player stats. If no player exists, creates a default one.
     cursor.execute("SELECT hp, max_hp, attack, defense, current_room FROM player_stats WHERE id = 1")
     row = cursor.fetchone()
     if row:
@@ -11,7 +11,7 @@ def load_player_stats(cursor):
         return {'hp': 100, 'max_hp': 100, 'attack': 10, 'defense': 5, 'current_room': 100}
 
 def save_player_stats(player, cursor, conn):
-    """Saves current player health and location to the database."""
+    #Saves current player health and location to the database.
     cursor.execute('''
         UPDATE player_stats 
         SET hp = ?, current_room = ? 

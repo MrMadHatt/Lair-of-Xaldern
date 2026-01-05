@@ -58,7 +58,7 @@ def main():
     current_room_id = player['current_room']
     game_status = 'playing'
     action_message = "...Awaken, Hero......the world needs your strength once more.........."
-
+    
     clear_screen()
     interface.show_instructions()
     input("\nPress Enter to begin...")
