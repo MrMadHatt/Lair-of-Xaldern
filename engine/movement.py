@@ -11,7 +11,6 @@ def get_new_room(user_input, current_room_id, rooms_list):
     if destination_id is not None and destination_id in rooms_list:
         dest_room_data = rooms_list[destination_id]
         
-        # This compensates for unfinished rooms!
         if dest_room_data.get('status') != 'finished':
             print(f"The path {direction} leads to a place still under construction...")
             return current_room_id

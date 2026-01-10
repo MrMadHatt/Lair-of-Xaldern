@@ -51,9 +51,8 @@ def main():
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # --- PERSISTENT DATA LOADING ---
     player = load_player_stats(cursor)
-    inventory = load_player_inventory(cursor) # Now loads from DB!
+    inventory = load_player_inventory(cursor)
     
     current_room_id = player['current_room']
     game_status = 'playing'
@@ -73,7 +72,6 @@ def main():
 
         player['current_room'] = current_room_id
 
-        # --- COMBAT ---
         enemy = get_enemy_in_room(current_room_id, cursor)
         if enemy:
             print(f"\n⚠️  A wild {enemy[1]} appeared!") 
@@ -85,7 +83,6 @@ def main():
             action_message = f"You defeated the {enemy[1]}!"
             clear_screen()
 
-        # --- DISPLAY ---
         interface.show_status(current_room_data, inventory, player['hp'], cursor)
         if action_message:
             print(f"\n💬 {action_message}")
@@ -93,7 +90,6 @@ def main():
             
         user_input = input("\n> ").lower().strip()
 
-        # --- LOGIC ---
         if not user_input: continue
 
         if user_input == 'quit':
