@@ -16,3 +16,5 @@ data/*.db
 # Design Files
 design/*
 !design/content/
+
+.ruff_cache/ 
