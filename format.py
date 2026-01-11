@@ -1,1 +1,0 @@
-## Move format functions here from interface.py
