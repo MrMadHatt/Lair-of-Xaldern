@@ -1,6 +1,3 @@
-import sqlite3
-
-
 def load_player_stats(cursor):
     cursor.execute(
         "SELECT hp, max_hp, attack, defense, current_room FROM player_stats WHERE id = 1"
@@ -21,8 +18,8 @@ def load_player_stats(cursor):
 def save_player_stats(player, cursor, conn):
     cursor.execute(
         """
-        UPDATE player_stats 
-        SET hp = ?, current_room = ? 
+        UPDATE player_stats
+        SET hp = ?, current_room = ?
         WHERE id = 1
     """,
         (player["hp"], player["current_room"]),
@@ -37,8 +34,8 @@ def load_player_inventory(cursor):
     """
     cursor.execute(
         """
-        SELECT items.name 
-        FROM inventory 
+        SELECT items.name
+        FROM inventory
         JOIN items ON inventory.item_id = items.id
     """
     )

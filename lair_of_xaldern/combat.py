@@ -1,12 +1,8 @@
-import sqlite3
-import random
-
-
 def get_enemy_in_room(room_id, cursor):
 
     cursor.execute(
         """
-        SELECT e.id, e.name, re.current_hp, e.attack, e.description 
+        SELECT e.id, e.name, re.current_hp, e.attack, e.description
         FROM room_enemies re
         JOIN enemies e ON re.enemy_id = e.id
         WHERE re.room_id = ? AND re.is_alive = 1
@@ -19,7 +15,7 @@ def get_enemy_in_room(room_id, cursor):
 def get_player_attack_power(cursor):
     cursor.execute(
         """
-        SELECT MAX(w.damage) 
+        SELECT MAX(w.damage)
         FROM inventory inv
         JOIN weapons w ON inv.item_id = w.item_id
         WHERE inv.is_equipped = 1
@@ -55,7 +51,7 @@ def attack_enemy(room_id, cursor, conn, player_stats):
     else:
         cursor.execute(
             """
-            UPDATE room_enemies SET current_hp = ? 
+            UPDATE room_enemies SET current_hp = ?
             WHERE room_id = ? AND enemy_id = ?
         """,
             (new_hp, room_id, e_id),

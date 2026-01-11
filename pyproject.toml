@@ -15,16 +15,14 @@ line-length = 88
  [tool.ruff]
  line-length = 88
  target-version = "py311"
- select = ["E", "F", "W"]
- ignore = []
- exclude = [
-     "data_sync.py",
-     "format.py"
- ]
 
 [tool.ruff.lint]
 select = ["E", "F", "W"]
-ignore = []
+ignore = ["E203", "E501"]
+exclude = [
+    "data_sync.py",
+    "format.py"
+]
 
  [tool.pytest.ini_options]
  pythonpath = ["."]
