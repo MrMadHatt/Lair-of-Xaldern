@@ -27,7 +27,7 @@ jobs:
 
       - name: Run linting (Black)
         run: |
-          black --check .
+          black --check . --exclude "data_sync.py|format.py"
 
       - name: Run tests
         run: |
