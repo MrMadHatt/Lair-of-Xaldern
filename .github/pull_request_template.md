@@ -17,5 +17,4 @@ Please describe the tests you ran to verify your changes.
 
 ## Checklist
 - [ ] My code follows the style guidelines of this project.
-- [ ] I have commented my code, particularly in hard-to-understand areas.
 - [ ] My changes generate no new warnings.
