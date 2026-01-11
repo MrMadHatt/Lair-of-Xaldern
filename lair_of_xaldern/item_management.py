@@ -1,11 +1,10 @@
-import sqlite3
-import engine.interface as interface
+import lair_of_xaldern.interface as interface
 
 
 def get_room_items(cursor, room_id):
     """Returns a list of item names for a specific room."""
     query = """
-        SELECT i.name 
+        SELECT i.name
         FROM items i
         JOIN room_items ri ON i.id = ri.item_id
         WHERE ri.room_id = ?
@@ -21,8 +20,8 @@ def pick_up_item(conn, user_input, room_id, inventory_list):
 
     cursor.execute(
         """
-        SELECT items.id, items.name FROM items 
-        JOIN room_items ON items.id = room_items.item_id 
+        SELECT items.id, items.name FROM items
+        JOIN room_items ON items.id = room_items.item_id
         WHERE room_items.room_id = ? AND LOWER(items.name) = ?
     """,
         (room_id, item_name_input),

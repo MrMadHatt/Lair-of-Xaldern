@@ -1,6 +1,3 @@
-import os
-
-
 def show_instructions():
     print(
         """
