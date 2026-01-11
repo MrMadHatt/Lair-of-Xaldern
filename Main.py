@@ -1,11 +1,15 @@
 import sys
 import os
 import sqlite3
-import engine.movement as movement
-import engine.interface as interface
-import engine.item_management as item_management
-from engine.combat import start_combat_loop, get_enemy_in_room
-from engine.player_manager import load_player_stats, save_player_stats, load_player_inventory
+import lair_of_xaldern.movement as movement
+import lair_of_xaldern.interface as interface
+import lair_of_xaldern.item_management as item_management
+from lair_of_xaldern.combat import start_combat_loop, get_enemy_in_room
+from lair_of_xaldern.player_manager import (
+    load_player_stats,
+    save_player_stats,
+    load_player_inventory
+)
 
 def clear_screen():
     """Clears the terminal screen."""
