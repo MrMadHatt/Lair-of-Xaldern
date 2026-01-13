@@ -17,7 +17,7 @@ Commands:
 
 def show_status(room, inventory, hp, cursor):
     print("=" * 40)
-    print(f"📍 LOCATION: {room['name'].upper()}")
+    print(f" LOCATION: {room['name'].upper()}")
     print("-" * 40)
 
     hearts = "♥ " * (max(0, hp) // 10)
@@ -26,7 +26,7 @@ def show_status(room, inventory, hp, cursor):
     print(f"HP: [{hearts}{empty_hearts}] {hp}%")
 
     inv_count = len(inventory) if inventory else 0
-    print(f"🎒 INVENTORY: {inv_count} item(s)")
+    print(f" INVENTORY: {inv_count} item(s)")
     print("-" * 40)
 
     print(
