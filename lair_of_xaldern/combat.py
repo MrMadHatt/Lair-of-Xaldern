@@ -37,10 +37,10 @@ def attack_enemy(room_id, cursor, conn, player_stats):
     player_dmg = get_player_attack_power(cursor)
 
     new_hp = current_hp - player_dmg
-    print(f"\n⚔️ You strike the {e_name} for {player_dmg} damage!")
+    print(f"\n You strike the {e_name} for {player_dmg} damage!")
 
     if new_hp <= 0:
-        print(f"💥 {e_name} has been defeated!")
+        print(f" {e_name} has been defeated!")
         cursor.execute(
             """
             UPDATE room_enemies SET is_alive = 0, current_hp = 0
@@ -68,10 +68,10 @@ def take_enemy_turn(enemy, player_stats):
     damage_to_player = max(1, e_atk - player_stats.get("defense", 0))
     player_stats["hp"] -= damage_to_player
 
-    print(f"👹 {e_name} lunges at you, dealing {damage_to_player} damage!")
+    print(f" {e_name} lunges at you, dealing {damage_to_player} damage!")
 
     if player_stats["hp"] <= 0:
-        print("\n💀 You have succumbed to your wounds. Game Over.")
+        print("\n You have succumbed to your wounds. Game Over.")
         return "death"
     return "alive"
 

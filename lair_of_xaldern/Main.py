@@ -84,7 +84,7 @@ def main():
 
         enemy = get_enemy_in_room(current_room_id, cursor)
         if enemy:
-            print(f"\n⚠️  A wild {enemy[1]} appeared!")
+            print(f"\n  A wild {enemy[1]} appeared!")
             combat_result = start_combat_loop(current_room_id, cursor, conn, player)
             if combat_result == "game_over":
                 game_status = "game_over"
@@ -95,7 +95,7 @@ def main():
 
         interface.show_status(current_room_data, inventory, player["hp"], cursor)
         if action_message:
-            print(f"\n💬 {action_message}")
+            print(f"\n {action_message}")
             action_message = ""
 
         user_input = input("\n> ").lower().strip()
@@ -136,7 +136,7 @@ def main():
 
         elif user_input in ["inventory", "i"]:
             inv_str = ", ".join(inventory) if inventory else "Empty"
-            action_message = f"🎒 Inventory: {inv_str}"
+            action_message = f" Inventory: {inv_str}"
 
         elif user_input in ["help", "commands"]:
             clear_screen()
