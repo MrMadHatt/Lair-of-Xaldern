@@ -11,21 +11,12 @@
 The engine follows a modular architecture to adhere to the **Single Responsibility Principle**:
 
 * **`lair_of_xaldern`**: The main package containing:
-<<<<<<< HEAD
 * **`__main__.py`**: - Module entry point used by `python3 -m lair_of_xaldern`.
 * **`main.py`**: - Core game loop and initialization logic.
-<<<<<<< HEAD
-* **` movement, inventory, combat and UI modules`**
-=======
-=======
-* **`__main__.py`**: Module entry point used by `python3 -m lair_of_xaldern`.
-* **`main.py`**: Core game loop and initialization logic.
->>>>>>> bae0a1f (Apply README updates before rebase)
 * **`movement`**
 * **`inventory`**
 * **`combat`**
 * **`UI modules`**
->>>>>>> b22691c (doc: update README.md with new entry point and achitecture changes.)
 ---
 * **`tools/`**: Contains the **Data-Sync Pipeline**, a custom utility that parses Obsidian Markdown files (YAML frontmatter) and synchronizes them with the production database.
 * **`design/`**: The "Source of Truth" for game content. By utilizing Markdown, the world-building process is kept distinct from the codebase.
