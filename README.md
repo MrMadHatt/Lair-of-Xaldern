@@ -10,7 +10,23 @@
 ## 📁 Project Architecture
 The engine follows a modular architecture to adhere to the **Single Responsibility Principle**:
 
-* **`engine/`**: The core execution layer, containing decoupled modules for movement validation, inventory state, and the user interface.
+* **`lair_of_xaldern`**: The main package containing:
+<<<<<<< HEAD
+* **`__main__.py`**: - Module entry point used by `python3 -m lair_of_xaldern`.
+* **`main.py`**: - Core game loop and initialization logic.
+<<<<<<< HEAD
+* **` movement, inventory, combat and UI modules`**
+=======
+=======
+* **`__main__.py`**: Module entry point used by `python3 -m lair_of_xaldern`.
+* **`main.py`**: Core game loop and initialization logic.
+>>>>>>> bae0a1f (Apply README updates before rebase)
+* **`movement`**
+* **`inventory`**
+* **`combat`**
+* **`UI modules`**
+>>>>>>> b22691c (doc: update README.md with new entry point and achitecture changes.)
+---
 * **`tools/`**: Contains the **Data-Sync Pipeline**, a custom utility that parses Obsidian Markdown files (YAML frontmatter) and synchronizes them with the production database.
 * **`design/`**: The "Source of Truth" for game content. By utilizing Markdown, the world-building process is kept distinct from the codebase.
 * **`data/`**: The persistence layer, housing the SQLite database. (Note: `.db` files are git-ignored to maintain local state integrity).
@@ -51,7 +67,7 @@ To avoid "Externally Managed Environment" errors, utilize a virtual environment:
    ```
 2. **Launch Engine:**
     ```bash
-    python3 engine/Main.py
+    python3 -m lair_of_xaldern
     ```
 ### 3. Engineering Highlights and Roadmap
 This section communicates the high-level technical skills utilized in the project.
