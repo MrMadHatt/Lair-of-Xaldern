@@ -10,11 +10,9 @@ from lair_of_xaldern.player_manager import (
     load_player_inventory,
 )
 
-
 def clear_screen():
     """Clears the terminal screen."""
     os.system("cls" if os.name == "nt" else "clear")
-
 
 def load_game_data():
     """Loads world data from the DB into a local cache for the session."""
