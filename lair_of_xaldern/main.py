@@ -9,7 +9,7 @@ from lair_of_xaldern.player_manager import (
     save_player_stats,
     load_player_inventory,
 )
-
+#normalize filename casing
 def clear_screen():
     """Clears the terminal screen."""
     os.system("cls" if os.name == "nt" else "clear")
