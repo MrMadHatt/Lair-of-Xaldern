@@ -11,11 +11,16 @@
 The engine follows a modular architecture to adhere to the **Single Responsibility Principle**:
 
 * **`lair_of_xaldern`**: The main package containing:
+<<<<<<< HEAD
 * **`__main__.py`**: - Module entry point used by `python3 -m lair_of_xaldern`.
 * **`main.py`**: - Core game loop and initialization logic.
 <<<<<<< HEAD
 * **` movement, inventory, combat and UI modules`**
 =======
+=======
+* **`__main__.py`**: Module entry point used by `python3 -m lair_of_xaldern`.
+* **`main.py`**: Core game loop and initialization logic.
+>>>>>>> bae0a1f (Apply README updates before rebase)
 * **`movement`**
 * **`inventory`**
 * **`combat`**
