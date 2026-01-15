@@ -1,15 +1,4 @@
-def get_enemy_in_room(room_id, cursor):
-
-    cursor.execute(
-        """
-        SELECT e.id, e.name, re.current_hp, e.attack, e.description
-        FROM room_enemies re
-        JOIN enemies e ON re.enemy_id = e.id
-        WHERE re.room_id = ? AND re.is_alive = 1
-    """,
-        (room_id,),
-    )
-    return cursor.fetchone()
+from lair_of_xaldern.load_logic import check_for_enemies as get_enemy_in_room
 
 
 def get_player_attack_power(cursor):

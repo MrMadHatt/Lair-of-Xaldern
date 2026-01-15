@@ -1,0 +1,1 @@
+# Enemy class logic here.

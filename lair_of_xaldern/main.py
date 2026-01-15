@@ -3,20 +3,23 @@ import sqlite3
 import lair_of_xaldern.movement as movement
 import lair_of_xaldern.interface as interface
 import lair_of_xaldern.item_management as item_management
-from lair_of_xaldern.combat import start_combat_loop, get_enemy_in_room
+from lair_of_xaldern.load_logic import check_for_enemies, DB_PATH
+from lair_of_xaldern.combat import start_combat_loop
 from lair_of_xaldern.player_manager import (
     load_player_stats,
     save_player_stats,
     load_player_inventory,
 )
-#normalize filename casing
+
+
+# normalize filename casing
 def clear_screen():
     """Clears the terminal screen."""
     os.system("cls" if os.name == "nt" else "clear")
 
+
 def load_game_data():
     """Loads world data from the DB into a local cache for the session."""
-    DB_PATH = os.path.join(os.getcwd(), "data", "game_data.db")
     try:
         conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
@@ -80,15 +83,18 @@ def main():
 
         player["current_room"] = current_room_id
 
-        enemy = get_enemy_in_room(current_room_id, cursor)
-        if enemy:
-            print(f"\n  A wild {enemy[1]} appeared!")
+        enemy_data = check_for_enemies(current_room_id, cursor)
+
+        if enemy_data:
+            _e_id, enemy_name, _enemy_hp, _enemy_attack, _enemy_desc = enemy_data
+
+            print(f"\n  A wild {enemy_name} appeared!")
             combat_result = start_combat_loop(current_room_id, cursor, conn, player)
             if combat_result == "game_over":
                 game_status = "game_over"
                 break
             save_player_stats(player, cursor, conn)
-            action_message = f"You defeated the {enemy[1]}!"
+            action_message = f"You defeated the {enemy_name}!"
             clear_screen()
 
         interface.show_status(current_room_data, inventory, player["hp"], cursor)
