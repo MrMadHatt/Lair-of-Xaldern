@@ -33,8 +33,8 @@ def load_game_data():
 
         cursor.execute(
             """
-            SELECT room_items.room_id, items.name 
-            FROM items 
+            SELECT room_items.room_id, items.name
+            FROM items
             JOIN room_items ON items.id = room_items.item_id
         """
         )

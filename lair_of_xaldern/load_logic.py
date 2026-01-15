@@ -14,7 +14,7 @@ def check_for_enemies(room_id, cursor):
         SELECT e.id, e.name, re.current_hp, e.attack, e.description
         FROM room_enemies re
         JOIN enemies e ON re.enemy_id = e.id
-        WHERE re.room_id = ? AND re.is_alive = 1        
+        WHERE re.room_id = ? AND re.is_alive = 1
 """
 
     cursor.execute(sql_query, (room_id,))
