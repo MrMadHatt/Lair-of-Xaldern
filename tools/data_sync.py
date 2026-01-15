@@ -1,13 +1,19 @@
 import os
+import sys
 import sqlite3
 import yaml
 import re
-from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
 
 # --- PATH CONFIGURATION ---
-TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = os.path.dirname(TOOLS_DIR)
-DATA_FOLDER = os.path.join(BASE_DIR, "design", "content")
+CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_SCRIPT_DIR)
+
+if PROJECT_ROOT not in sys.path:
+    sys.path.append(PROJECT_ROOT)
+
+from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
+
+DATA_FOLDER = os.path.join(PROJECT_ROOT, "design", "content")
 
 
 def clean_id(val):
@@ -23,8 +29,10 @@ def clean_id(val):
 
 
 def setup_database():
-    if not os.path.exists(os.path.dirname(DB_NAME)):
-        os.makedirs(os.path.dirname(DB_NAME))
+    db_dir = os.path.dirname(DB_NAME)
+    if not os.path.exists(db_dir):
+        os.makedirs(db_dir)
+
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
