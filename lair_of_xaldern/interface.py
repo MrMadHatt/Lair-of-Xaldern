@@ -14,13 +14,9 @@ Commands:
   quit           - Save and exit the game
 
 {rule}"""
-
     )
-
-
 def show_status(room, inventory, hp, cursor):
-
-    _ = cursor # Unused variable placeholder
+    _ = cursor 
     print("=" * 60)
     print(f" LOCATION: {room['name'].upper()}")
     print("-" * 60)
