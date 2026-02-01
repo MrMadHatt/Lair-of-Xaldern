@@ -1,5 +1,7 @@
 import lair_of_xaldern.interface as interface
 
+# import format_interface as format_interface
+
 
 def get_room_items(cursor, room_id):
     """Returns a list of item names for a specific room."""

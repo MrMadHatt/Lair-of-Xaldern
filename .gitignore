@@ -17,4 +17,7 @@ data/*.db
 design/*
 !design/content/
 
-.ruff_cache/ 
+.ruff_cache/
+
+# Drafts and temporary files
+lair_of_xaldern/format_interface.py
