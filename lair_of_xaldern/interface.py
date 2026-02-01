@@ -1,7 +1,6 @@
 def show_instructions():
     rule = "=" * 60
-    print(
-        f"""
+    print(f"""
 {rule}
                 GAME INSTRUCTIONS
 {rule}
@@ -13,10 +12,11 @@ Commands:
   help           - Show these instructions
   quit           - Save and exit the game
 
-{rule}"""
-    )
+{rule}""")
+
+
 def show_status(room, inventory, hp, cursor):
-    _ = cursor 
+    _ = cursor
     print("=" * 60)
     print(f" LOCATION: {room['name'].upper()}")
     print("-" * 60)

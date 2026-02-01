@@ -2,14 +2,12 @@ from lair_of_xaldern.load_logic import check_for_enemies as get_enemy_in_room
 
 
 def get_player_attack_power(cursor):
-    cursor.execute(
-        """
+    cursor.execute("""
         SELECT MAX(w.damage)
         FROM inventory inv
         JOIN weapons w ON inv.item_id = w.item_id
         WHERE inv.is_equipped = 1
-    """
-    )
+    """)
     result = cursor.fetchone()
     return result[0] if result and result[0] is not None else 1
 

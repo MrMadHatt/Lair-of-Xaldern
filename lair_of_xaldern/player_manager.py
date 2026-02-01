@@ -32,11 +32,9 @@ def load_player_inventory(cursor):
     Fetches item names from the inventory table.
     This allows the inventory list in Main.py to persist across sessions.
     """
-    cursor.execute(
-        """
+    cursor.execute("""
         SELECT items.name
         FROM inventory
         JOIN items ON inventory.item_id = items.id
-    """
-    )
+    """)
     return [row[0] for row in cursor.fetchall()]
