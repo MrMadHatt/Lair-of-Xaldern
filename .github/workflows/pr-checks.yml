@@ -23,11 +23,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt || true
-          pip install black pytest
+          pip install ruff pytest
 
-      - name: Run linting (Black)
+      - name: Run linting (Ruff)
         run: |
-          black --check . --exclude "data_sync.py|format.py"
+          ruff check .
 
       - name: Run tests
         run: |
