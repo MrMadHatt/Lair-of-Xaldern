@@ -9,6 +9,7 @@ __pycache__/
 # IDE and Design files
 local-Projects/
 *.canvas
+.vscode/
 
 # Database (Exclude the binary to keep the repo data-driven)
 data/*.db
