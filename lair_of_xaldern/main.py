@@ -16,7 +16,7 @@ from lair_of_xaldern.player_manager import (
 # normalize filename casing
 def clear_screen():
     """Clears the terminal screen."""
-    subprocess.run("cls" if os.name == "nt" else "clear")
+    subprocess.run("cls" if os.name == "nt" else "clear", shell=True)
 
 
 def load_game_data():
@@ -32,11 +32,13 @@ def load_game_data():
         for r_id in rooms_dict:
             rooms_dict[r_id]["items"] = []
 
-        cursor.execute("""
+        cursor.execute(
+            """
             SELECT room_items.room_id, items.name
             FROM items
             JOIN room_items ON items.id = room_items.item_id
-        """)
+        """
+        )
         for item in cursor.fetchall():
             if item["room_id"] in rooms_dict:
                 rooms_dict[item["room_id"]]["items"].append(item["name"])
