@@ -2,7 +2,6 @@
 __pycache__/
 .venv/
 .env
-.vscode/
 
 # System files
 .DS_Store
@@ -10,6 +9,7 @@ __pycache__/
 # IDE and Design files
 local-Projects/
 *.canvas
+.vscode/
 
 # Database (Exclude the binary to keep the repo data-driven)
 data/*.db
