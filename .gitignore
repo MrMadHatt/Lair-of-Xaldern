@@ -2,6 +2,7 @@
 __pycache__/
 .venv/
 .env
+.vscode/
 
 # System files
 .DS_Store

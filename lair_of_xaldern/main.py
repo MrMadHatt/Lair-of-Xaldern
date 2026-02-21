@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sqlite3
 import lair_of_xaldern.movement as movement
 import lair_of_xaldern.interface as interface
@@ -15,7 +16,7 @@ from lair_of_xaldern.player_manager import (
 # normalize filename casing
 def clear_screen():
     """Clears the terminal screen."""
-    os.system("cls" if os.name == "nt" else "clear")
+    subprocess.run("cls" if os.name == "nt" else "clear")
 
 
 def load_game_data():
