@@ -21,3 +21,4 @@ select = ["E", "F", "W"]
 ignore = ["E203", "E501"]
 exclude = [
     "data_sync.py",
+]
