@@ -3,7 +3,6 @@ import sys
 import sqlite3
 import yaml
 import re
-from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
 
 # --- PATH CONFIGURATION ---
 CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -11,6 +10,8 @@ PROJECT_ROOT = os.path.dirname(CURRENT_SCRIPT_DIR)
 
 if PROJECT_ROOT not in sys.path:
     sys.path.append(PROJECT_ROOT)
+
+from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
 
 DATA_FOLDER = os.path.join(PROJECT_ROOT, "design", "content")
 
