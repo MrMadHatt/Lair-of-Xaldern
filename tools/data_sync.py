@@ -3,6 +3,7 @@ import sys
 import sqlite3
 import yaml
 import re
+from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
 
 # --- PATH CONFIGURATION ---
 CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -10,8 +11,6 @@ PROJECT_ROOT = os.path.dirname(CURRENT_SCRIPT_DIR)
 
 if PROJECT_ROOT not in sys.path:
     sys.path.append(PROJECT_ROOT)
-
-from lair_of_xaldern.load_logic import DB_PATH as DB_NAME
 
 DATA_FOLDER = os.path.join(PROJECT_ROOT, "design", "content")
 
@@ -38,21 +37,21 @@ def setup_database():
 
     # 1. Main Items table
     cursor.execute(
-        """CREATE TABLE IF NOT EXISTS items 
+        """CREATE TABLE IF NOT EXISTS items
                      (id INTEGER PRIMARY KEY, name TEXT, status TEXT)"""
     )
 
     # 2. Rooms table
     cursor.execute(
-        """CREATE TABLE IF NOT EXISTS rooms 
-                     (id INTEGER PRIMARY KEY, name TEXT, north INTEGER, south INTEGER, 
+        """CREATE TABLE IF NOT EXISTS rooms
+                     (id INTEGER PRIMARY KEY, name TEXT, north INTEGER, south INTEGER,
                       east INTEGER, west INTEGER, is_locked INTEGER DEFAULT 0,
                       status TEXT)"""
     )
 
     # 3. Room-Item Join Table
     cursor.execute(
-        """CREATE TABLE IF NOT EXISTS room_items 
+        """CREATE TABLE IF NOT EXISTS room_items
                      (room_id INTEGER, item_id INTEGER,
                       FOREIGN KEY(room_id) REFERENCES rooms(id),
                       FOREIGN KEY(item_id) REFERENCES items(id))"""
