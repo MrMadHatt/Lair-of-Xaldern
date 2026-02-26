@@ -21,9 +21,3 @@ select = ["E", "F", "W"]
 ignore = ["E203", "E501"]
 exclude = [
     "data_sync.py",
-    "format.py"
-]
-
- [tool.pytest.ini_options]
- pythonpath = ["."]
- testpaths = ["tests"]
