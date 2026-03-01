@@ -13,6 +13,7 @@ local-Projects/
 
 # Database (Exclude the binary to keep the repo data-driven)
 data/*.db
+data/game_data.db.sqbpro
 
 # Design Files
 design/*
